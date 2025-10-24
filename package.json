@@ -1,25 +1,26 @@
 {
-  "name": "mmm-calendarext3",
-  "version": "1.10.2",
-  "description": "MagicMirror module for calendar view",
+  "name": "mmm-calendarext3-wrap",
+  "version": "1.10.2-wrap.1",
+  "upstreamVersion": "3.7.0",
+  "description": "Fork of MMM-CalendarExt3 with event title wrap",
   "keywords": [
     "MM",
     "MagicMirror",
     "calendar",
     "CALEXT3"
   ],
-  "homepage": "https://github.com/MMRIZE/MMM-CalendarExt3#readme",
+  "homepage": "https://github.com/mossglenn/MMM-CalendarExt3-Wrap",
   "bugs": {
     "url": "https://github.com/MMRIZE/MMM-CalendarExt3/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MMRIZE/MMM-CalendarExt3.git"
+    "url": "git+https://github.com/mossglenn/MMM-CalendarExt3-Wrap.git"
   },
   "license": "MIT",
-  "author": "eouia0819@gmail.com",
+  "author": "amos@amosglenn.com",
   "type": "commonjs",
-  "main": "MMM-CalendarExt3.js",
+  "main": "MMM-CalendarExt3-Wrap.js",
   "scripts": {
     "lint": "eslint",
     "lint:fix": "eslint --fix",

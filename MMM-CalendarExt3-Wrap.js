@@ -13,7 +13,7 @@ consoe.log(HTMLElement.prototype.hasOwnProperty("popover")) // true
 if (!popoverSupported) console.info("This browser doesn't support popover yet. Update your system.")
 const animationSupported = (typeof window !== "undefined" && window?.mmVersion) ? +(window.mmVersion.split(".").join("")) >= 2250 : false
 
-Module.register("MMM-CalendarExt3", {
+Module.register("MMM-CalendarExt3-Wrap", {
   defaults: {
     mode: "week", // or 'month', 'day'
     weekIndex: -1, // Which week from this week starts in a view. Ignored on mode 'month'
@@ -94,7 +94,7 @@ Module.register("MMM-CalendarExt3", {
   },
 
   getStyles () {
-    let css = ["MMM-CalendarExt3.css"]
+    let css = ["MMM-CalendarExt3-Wrap.css"]
     return css
   },
 
