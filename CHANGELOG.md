@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+<!-- eslint-disable-next-line markdown/no-missing-label-refs -->
+## [unreleased]
+- converted module name to MMM-CalendarExt3-Wrap
+- docs: changed name in most documentation 
+- TODO: update README and bug_report
+
+
 ## [1.10.2](https://github.com/MMRIZE/MMM-CalendarExt3/compare/v1.10.1...v1.10.2) - 2025-10-04
 
 ### Added

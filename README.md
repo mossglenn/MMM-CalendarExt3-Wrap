@@ -1,4 +1,5 @@
-# MMM-CalendarExt3
+# MMM-CalendarExt3-Wrap
+## A fork of MMM-CalendarExt3 that allows wrapping event titles.
 
 MagicMirror module for calendar view.
 
