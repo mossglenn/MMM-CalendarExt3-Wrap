@@ -3,6 +3,14 @@
 
 MagicMirror module for calendar view.
 
+## Fork Information
+### Branch roles
+- main (mirror)
+Exact copy of upstream’s main. Never commit directly; only fast-forward from upstream. This makes pulling updates trivial and auditable.
+- wrap (release for this fork)
+The fork's default branch containing the released changes from the synced main branches.
+
+
 ## Screenshot
 
 ![screenshot](https://raw.githubusercontent.com/MMRIZE/public_ext_storage/main/MMM-CalendarExt3/calendarext3.png)
@@ -31,6 +39,16 @@ My previous module, `MMM-CalendarExt2`, was always notorious for its difficulty 
 
 ### Install
 
+This fork uses this code to use the "wrapping" branch instead:
+```sh
+# Installation
+cd ~/MagicMirror/modules
+git clone -b wrapping --single-branch https://github.com/amosglenn/MMM-CalendarExt3-Wrap.git
+npm ci
+git submodule update --init --recursive
+```
+
+Previous versions used this:
 ```sh
 cd ~/MagicMirror/modules
 git clone https://github.com/MMRIZE/MMM-CalendarExt3
