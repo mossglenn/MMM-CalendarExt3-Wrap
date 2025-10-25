@@ -14,6 +14,7 @@ selector-pseudo-class-no-unknown, keyframes-name-pattern,
   --eventheight: calc(var(--fontsize) + 4px);
   --displayEndTime: none;
   --displayWeatherTemp: none;
+  --title-max-lines: 1; /* clamp for titles (overridden by JS) */
 
   font-size: var(--fontsize);
   color: var(--defaultcolor);
@@ -195,13 +196,14 @@ selector-pseudo-class-no-unknown, keyframes-name-pattern,
   justify-content: flex-start;
   gap: 2px;
   text-overflow: ellipsis;
-  overflow: hidden;
+  overflow: hidden; /* container still clips overflow across rows */
   white-space: nowrap;
   min-width: 0;
   position: relative;
 }
 
 .CX3 .event .headline {
+  white-space: normal; /* allow child title to wrap */
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -212,7 +214,7 @@ selector-pseudo-class-no-unknown, keyframes-name-pattern,
 }
 
 .CX3 .event .headline .title.marquee {
-  overflow: hidden;
+  overflow: hidden; /* container still clips overflow across rows */
   white-space: nowrap;
   text-overflow: unset;
   position: relative;
@@ -268,10 +270,23 @@ selector-pseudo-class-no-unknown, keyframes-name-pattern,
   font-size: 75%;
   font-weight: bold;
   text-overflow: ellipsis;
-  overflow: hidden;
+  overflow: hidden; /* container still clips overflow across rows */
   white-space: nowrap;
   padding-left: 2px;
   order: 3;
+}
+
+
+/* Enable multi-line clamp when the title has the wrap marker */
+.CX3 .event .headline .title.cx3-wrap-title {
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--title-max-lines, 1);
+  overflow: hidden;
+  line-height: var(--eventheight); /* ensure consistent line spacing */
 }
 
 .CX3 .event .headline .symbol {
@@ -606,3 +621,41 @@ selector-pseudo-class-no-unknown, keyframes-name-pattern,
 #CX3_POPOVER .criteriaItem.calendar .name::before {
   content: "CALENDAR";
 }
+
+/* ===== Debug visuals (toggle via data-debug-wrap="true") ===== */
+.CX3[data-debug-wrap="true"] .cell {
+  outline: 1px dashed rgba(127, 127, 127, 0.6);
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(127, 127, 127, 0.25) 0,
+      rgba(127, 127, 127, 0.25) 1px,
+      transparent 1px,
+      transparent var(--eventheight)
+    );
+}
+
+.CX3[data-debug-wrap="true"] .event {
+  outline: 1px solid rgba(0, 128, 255, 0.6);
+  position: relative;
+}
+
+.CX3[data-debug-wrap="true"] .event::after {
+  content: "rows: " attr(data-spanned-rows);
+  position: absolute;
+  top: 1px;
+  right: 3px;
+  font-size: 10px;
+  line-height: 1;
+  padding: 1px 4px;
+  border-radius: 6px;
+  background: rgba(0, 128, 255, 0.12);
+  color: rgba(0, 64, 128, 0.9);
+  pointer-events: none;
+  z-index: 100;
+}
+
+.CX3[data-debug-wrap="true"] .event[data-spanned-rows=""]::after {
+  content: "rows: 1"; /* fallback when no data-spanned-rows */
+}
+
